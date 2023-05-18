@@ -31,11 +31,11 @@ function RadiusMenu({ radius, updateRadius, mapDataFetchState, toggleMenu }: Rad
 
   return (
     <div className="hide-scrollbar w-full h-full flex flex-col justify-start items-center pt-20 overflow-y-scroll bg-dark-sea/95">
-      <h3 className="mb-6 text-5xl text-white">Radius</h3>
+      <h3 id="RadiusHeadline" className="mb-6 text-5xl text-white">Radius</h3>
       <p className="mb-4 font-light text-white">
         Click on the drop-down menu to select a <span className="text-bright-seaweed">radius</span> in which you want to look for new <span className="text-bright-seaweed">spots</span>.
       </p>
-      <div className="relative w-full">
+      <div id="RadiusDropdownMenu" className="relative w-full">
         <Listbox value={radius} disabled={mapDataFetchState.value === 'pending'} onChange={changeHandler}>
           <Listbox.Button
             name="select-radius"

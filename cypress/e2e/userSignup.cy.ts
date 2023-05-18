@@ -17,7 +17,7 @@ describe('check signup form process', () => {
     cy.url().should('include', '/signup');
   });
 
-  it('should show an error message for each empty input', () => {
+  it('should show error message for each empty input', () => {
     cy.get('#signup-btn-submit').click();
     cy.get('.input-error-text').its('length').should('eq', 4);
   });

@@ -174,7 +174,7 @@ function AddMappointMenu({ coords }: AddMappointMenuProps) {
   }
 
   return (
-    <div className="hide-scrollbar w-full h-full flex flex-col justify-start items-center pt-20 overflow-y-scroll">
+    <div id="AddMappointContainer" className="hide-scrollbar w-full h-full flex flex-col justify-start items-center pt-20 overflow-y-scroll">
       <h3 className="mb-6 text-5xl text-center text-white">Add mappoint</h3>
       <form id="add-point-form" className="flex-auto w-4/5 max-w-md flex flex-col justify-start items-center pb-10 xs:px-5" onSubmit={(e) => handleSubmit(e)}>
         <div
@@ -268,6 +268,7 @@ function AddMappointMenu({ coords }: AddMappointMenuProps) {
           </label>
           <textarea
             placeholder="Description"
+            id="add-pin-description"
             rows={4}
             className={`w-full max-h-40 p-1 text-default-font bg-transparent border-solid border-2 rounded-md appearance-none ${formErrors.description ? 'border-danger' : 'border-bright-seaweed'}`}
             onClick={() => setFormErrors({ ...formErrors, description: '' })}
@@ -380,7 +381,7 @@ function AddMappointMenu({ coords }: AddMappointMenuProps) {
           <input
             type="submit"
             value="Add point"
-            id="login-btn-submit"
+            id="add-point-submit"
             className="mq-hover:hover:bg-hovered-seaweed w-full max-w-xs p-2 mb-4 text-dark-sea bg-bright-seaweed rounded-md transition-colors cursor-pointer"
           />
         </div>

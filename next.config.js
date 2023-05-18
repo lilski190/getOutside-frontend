@@ -8,7 +8,8 @@ const withPWA = require("next-pwa")({
   runtimeCaching,
 });
 const nextConfig = withPWA({
-  reactStrictMode: process.env.NODE_ENV === 'development'
+  reactStrictMode: process.env.NODE_ENV === 'development',
+  output: 'standalone',
 });
 
 module.exports = nextConfig;

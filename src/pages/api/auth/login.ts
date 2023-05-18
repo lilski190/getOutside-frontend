@@ -9,7 +9,7 @@ type LoginRequest = NextApiRequest & {
   body: {
     username: string;
     password: string;
-  };
+  }
 };
 
 type LoginResponse = NextApiResponse<UserAuthProps | FetchServerErrorResponse>;

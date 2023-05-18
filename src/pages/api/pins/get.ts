@@ -37,7 +37,7 @@ export default async function handler(_req: PinsApiRequest, res: NextApiResponse
     const authToken: TokenPayload = JSON.parse(authTokenString);
 
     return await axios
-      .get('https://cherrytomaten.herokuapp.com/api/mappoint', {
+      .get('<https://cherrytomaten.herokuapp.com/api/mappoint>', {
         headers: {
           Authorization: 'Bearer ' + authToken.token,
         },

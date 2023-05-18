@@ -66,7 +66,7 @@ function ContentPopup({ trigger, setTrigger, bgColor = 'bg-dark-sea', children }
               handleDragEvent(info);
             }}
             className={`hide-scrollbar relative w-full max-w-6xl h-full px-6 pt-15 overflow-y-scroll ${bgColor} rounded-t-xl touch-none md:px-10`}>
-            <button
+            <button id="closePopup"
               className="z-[9999] modest-shadow absolute top-4 right-4 w-10 h-10 p-2 bg-bright-seaweed rounded-full transition-colors hover:xs:bg-hovered-seaweed"
               onClick={() => setTrigger(false)}>
               <CloseSvg width="100%" height="100%" fill="#fff" />

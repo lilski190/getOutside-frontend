@@ -81,7 +81,7 @@ function Map({ cookiedCategories, cookiedRadius, cookiedShowOnlyFav, favoritePin
 
   const mapElem = useMemo(
     () => (
-      <MapContainer className="w-screen h-full" center={userLocation} zoom={13} minZoom={7} maxZoom={20} scrollWheelZoom={true} preferCanvas={true}>
+      <MapContainer id="Map-Container" className="w-screen h-full" center={userLocation} zoom={13} minZoom={7} maxZoom={20} scrollWheelZoom={true} preferCanvas={true}>
         <TileLayer
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org">OpenMapTiles</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
@@ -134,6 +134,7 @@ function Map({ cookiedCategories, cookiedRadius, cookiedShowOnlyFav, favoritePin
 
       <div className="z-[999] absolute top-4 right-4 md:right-8">
         <div
+          id="selectCategories"
           className="relative w-12 h-12 flex flex-col justify-center items-center px-3 bg-bright-seaweed rounded-full shadow-md transition-colors cursor-pointer xs:hover:bg-hovered-seaweed"
           role="button"
           aria-label="Category filter"
@@ -146,6 +147,7 @@ function Map({ cookiedCategories, cookiedRadius, cookiedShowOnlyFav, favoritePin
         </div>
 
         <div
+          id="selectRadius"
           className="w-12 h-12 flex flex-col justify-center items-center px-3 mt-3 bg-bright-seaweed rounded-full shadow-md transition-colors cursor-pointer xs:hover:bg-hovered-seaweed"
           role="button"
           aria-label="Filter filter"
@@ -156,7 +158,7 @@ function Map({ cookiedCategories, cookiedRadius, cookiedShowOnlyFav, favoritePin
       </div>
 
       <div className="z-[999] absolute right-4 bottom-10 md:right-8">
-        <div
+        <div id="addMappoint"
           className={`w-12 h-12 flex flex-col justify-center items-center px-3 mt-3  rounded-full shadow-md transition-colors cursor-pointer ${inAddPointMode ? 'bg-warning xs:hover:bg-warning' : 'bg-bright-seaweed xs:hover:bg-hovered-seaweed'}`}
           role="button"
           aria-label="Add a mappoint"

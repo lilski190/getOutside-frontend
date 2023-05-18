@@ -42,21 +42,21 @@ function FilterMenu({ allCategories, categoryFilter, setCatFilter, setTrigger, s
 
   return (
     <div className="hide-scrollbar w-full h-full flex flex-col justify-start items-center pt-20 overflow-y-scroll bg-dark-sea/95">
-      <h3 className="mb-6 text-5xl text-white">Categories</h3>
+      <h3 id="CategoriesHeadline" className="mb-6 text-5xl text-white">Categories</h3>
       {allCategories.length !== 0 && (
         <>
-          <button
+          <button id="showFavorites"
             className={`w-full max-w-[400px] px-6 py-1.5 mt-1 mb-3 whitespace-nowrap text-bright-seaweed border rounded-full transition-colors ${onlyShowFavs ? 'bg-warning border-warning text-dark-sea' : 'bg-transparent border-bright-seaweed'}`}
             onClick={() => setOnlyShowFavs(!onlyShowFavs)}
           >Only show favorite pins</button>
           <div className="w-full flex flex-row justify-center items-center py-3 mb-7">
-            <button
+            <button id="selectAll"
               className="w-full max-w-[200px] px-6 py-1.5 mr-2 whitespace-nowrap bg-bright-seaweed border-none rounded-full transition-colors disabled:text-dark-seaweed disabled:bg-darker-sea disabled:hover:bg-darker-sea xs:hover:bg-hovered-seaweed"
               onClick={selectAll}
               disabled={allCategories.length === categoryFilter?.length}>
               Select all
             </button>
-            <button
+            <button id="unselcetAll"
               className="w-full max-w-[200px] px-6 py-1.5 whitespace-nowrap bg-bright-seaweed border-none rounded-full transition-colors disabled:text-dark-seaweed disabled:bg-darker-sea disabled:hover:bg-darker-sea xs:hover:bg-hovered-seaweed"
               onClick={unselectAll}
               disabled={categoryFilter?.length === 0}>
@@ -65,7 +65,7 @@ function FilterMenu({ allCategories, categoryFilter, setCatFilter, setTrigger, s
           </div>
         </>
       )}
-      <form>
+      <form id="Categorielist">
         {allCategories.map((catElem: string) => {
           return (
             <div key={catElem + '-key'} className="mb-3 cursor-pointer">
@@ -79,7 +79,7 @@ function FilterMenu({ allCategories, categoryFilter, setCatFilter, setTrigger, s
         })}
       </form>
       {allCategories.length !== 0 ? (
-        <button
+        <button id="ApplyFilter"
           className="w-full max-w-[200px] px-6 py-1.5 mt-8 mb-16 whitespace-nowrap bg-bright-seaweed border-none rounded-full transition-colors disabled:text-dark-seaweed disabled:bg-darker-sea disabled:hover:bg-darker-sea xs:hover:bg-hovered-seaweed"
           onClick={() => setTrigger(false)}>
           Apply

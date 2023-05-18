@@ -12,7 +12,7 @@ describe('check user login form processes', () => {
     cy.url().should('include', '/login');
   });
 
-  it('should show an error message for both empty input fields when trying to submit', () => {
+  it('should show error message for both empty input fields when trying to submit', () => {
     cy.get('.input-error-text').should('not.exist');
     cy.get('#login-btn-submit').click();
     cy.get('.input-error-text').its('length').should('eq', 2);
@@ -31,6 +31,11 @@ describe('check user login form processes', () => {
     cy.get('#login-password').type('wrongPassword');
     cy.get('#login-btn-submit').click();
     cy.get('.server-fetch-error-text').should('exist').and('have.text', 'No active account found with the given credentials');
+  });
+
+  it('should redirect to home', () => {
+    cy.login('lili', 'lili')
+    cy.url().should('eq', 'http://localhost:3000/home');
   });
 });
 
