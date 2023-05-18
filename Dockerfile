@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM node:16-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -8,7 +8,7 @@ WORKDIR /getOutside-frontend
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock ./
-RUN yarn install 
+RUN yarn install
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -21,7 +21,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN yarn build
+RUN yarn build 
 
 # If using npm comment out above and use below instead
 # RUN npm run build
