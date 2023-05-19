@@ -1,0 +1,13 @@
+version: "3.2"
+services:
+  nextjs-docker:
+    build: .
+    environment:
+      - PORT=3000
+  cypress:
+    image: "cypress/included:9.4.1"
+    depends_on:
+      - nextjs-docker
+    working_dir: /getOutside-frontend
+    volumes:
+      - ./:/getOutside-frontend
