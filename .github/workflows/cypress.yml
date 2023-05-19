@@ -12,5 +12,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v3
         with:
+          node-version: '16'
           comand: yarn cypress run
           browser: chrome
