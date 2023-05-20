@@ -1,4 +1,5 @@
 {
+  
   "name": "getoutside",
   "version": "2.0.2",
   "private": true,
@@ -22,8 +23,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "cypress:open": "cypress open",
-    "pretest": "docker build -t nextjs-docker . && docker run -p 3000:3000 nextjs-docker",
-    "test":  "cypress run"
+    "test":  "docker compose up -d && cypress run && docker compose down",
+    "cypress:run": "cypress run"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

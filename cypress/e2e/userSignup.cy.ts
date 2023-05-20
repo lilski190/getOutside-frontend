@@ -1,10 +1,10 @@
 describe('check signup form process', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/signup');
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/signup`);
   });
 
   before(() => {
-    cy.visit('http://localhost:3000/signup');
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/signup`);
     cy.get('#signup-username').should('be.visible').clear();
     cy.get('#signup-email').should('be.visible').clear();
     cy.get('#signup-password').should('be.visible').clear();
@@ -13,7 +13,7 @@ describe('check signup form process', () => {
 
   it('should load the register page', () => {
     cy.clearCookies();
-    cy.visit('http://localhost:3000/signup');
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/signup`);
     cy.url().should('include', '/signup');
   });
 

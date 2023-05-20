@@ -3,14 +3,14 @@ import * as constants from '../../src/types/constants';
 describe('check if Mappoints are loaded', () => {
     before(() => {
     cy.clearCookies();
-    cy.visit('http://localhost:3000/login');
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/login`);
     cy.get('#login-username').should('be.visible').clear().type('lili');
     cy.get('#login-password').should('be.visible').clear().type('lili');
     cy.get('#login-btn-submit').should('be.visible').click();
     });
   
     it('user should be logged in', () => {
-    cy.url().should('eq', 'http://localhost:3000/home');
+    cy.url().should('eq', `${Cypress.env('CYPRESS_baseUrl')}/home`);
     });
 
     it('should load the Map Content', () => {

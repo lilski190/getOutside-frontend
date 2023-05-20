@@ -1,13 +1,31 @@
 version: "3.2"
 services:
-  nextjs-docker:
+  web:
     build: .
-    environment:
-      - PORT=3000
-  cypress:
-    image: "cypress/included:9.4.1"
-    depends_on:
-      - nextjs-docker
-    working_dir: /getOutside-frontend
-    volumes:
-      - ./:/getOutside-frontend
+    container_name: nextjs
+    ports:
+      - "3000:3000"
+
+  # cypress:
+  #   image: "cypress/included:12.3.0"
+  #   depends_on:
+  #     - web
+  #   environment:
+  #     - CYPRESS_baseUrl=http://web:3000
+  #   command: ["--browser", "firefox"]
+  #   working_dir: /getOutside-frontend
+  #   volumes:
+  #     - ./:/getOutside-frontend
+  #     - ./:/getOuside-frontend/cypress.config.js
+    # build: ./cypress
+    # depends_on:
+    #   - web
+    # environment:
+    #   - CYPRESS_baseUrl=http://web
+    # command: npx cypress run
+    # volumes: 
+    #   - ./cypress:/cypress
+    #   - ./cypress.config.js:/cypress.config.js
+  
+  
+  

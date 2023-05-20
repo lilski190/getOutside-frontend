@@ -1,14 +1,14 @@
 describe('check user login form processes', () => {
   beforeEach(() => {
     cy.clearCookies();
-    cy.visit('http://localhost:3000/login');
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/login`);
     cy.get('#login-username').should('be.visible').clear();
     cy.get('#login-password').should('be.visible').clear();
   });
 
   it('should redirect to the login page', () => {
     cy.clearCookies();
-    cy.visit('http://localhost:3000/home');
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/home`);
     cy.url().should('include', '/login');
   });
 
@@ -35,7 +35,7 @@ describe('check user login form processes', () => {
 
   it('should redirect to home', () => {
     cy.login('lili', 'lili')
-    cy.url().should('eq', 'http://localhost:3000/home');
+    cy.url().should('eq', `${Cypress.env('CYPRESS_baseUrl')}/home`);
   });
 });
 

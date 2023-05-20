@@ -34,6 +34,9 @@ COPY --from=builder /getOutside-frontend/public ./public
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /getOutside-frontend/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /getOutside-frontend/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /getOutside-frontend/.next ./.next
+COPY --from=builder /getOutside-frontend/node_modules ./node_modules
+COPY --from=builder /getOutside-frontend/package.json ./package.json
 
 USER nextjs
 
@@ -41,4 +44,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD ["node", "server.js"]
+CMD ["node", "server.js", "npm", "start"]
