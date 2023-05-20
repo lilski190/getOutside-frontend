@@ -17,7 +17,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v3
         with: 
-          build: npm build
+          build: npm run build
           start: npm start
           comand: yarn cypress run
           browser: firefox
