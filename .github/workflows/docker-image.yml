@@ -15,4 +15,12 @@ jobs:
       run: docker build . --file Dockerfile --tag next-js
 
     - name: Run docker compose
-      run: docker compose up
+      run: docker compose up -d
+      
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '300s'
+      
+    - name: Docker compose Down
+      run: docker compose down
