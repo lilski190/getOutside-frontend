@@ -27,66 +27,66 @@ describe('check user authentication process', () => {
     cy.url().should('not.include', 'login');
   });
 
-  // it('should refresh the expired token and query a new one', () => {
-  //   cy.intercept('GET', '/api/auth/by-token**', (req) => {
-  //     delete req.headers['if-none-match'];
-  //   }).as('authUserByCookiedToken');
+  it('should refresh the expired token and query a new one', () => {
+    cy.intercept('GET', '/api/auth/by-token**', (req) => {
+      delete req.headers['if-none-match'];
+    }).as('authUserByCookiedToken');
 
-  //   cy.intercept('GET', '/api/auth/refresh-token**', (req) => {
-  //     delete req.headers['if-none-match'];
-  //   }).as('refreshToken');
+    cy.intercept('GET', '/api/auth/refresh-token**', (req) => {
+      delete req.headers['if-none-match'];
+    }).as('refreshToken');
 
-  //   // manipulate cookies first to simulate an expired token
-  //   cy.getCookie(constants.AUTH_TOKEN).then(($cookie) => {
-  //     if ($cookie !== null) {
-  //       $cookie.value = 'expired_token_value';
-  //       cy.setCookie($cookie.name, $cookie.value, { secure: true, sameSite: 'strict', expiry: $cookie.expiry });
-  //     } else {
-  //       cy.log('no auth token cookie found');
-  //     }
-  //   });
+    // manipulate cookies first to simulate an expired token
+    cy.getCookie(constants.AUTH_TOKEN).then(($cookie) => {
+      if ($cookie !== null) {
+        $cookie.value = 'expired_token_value';
+        cy.setCookie($cookie.name, $cookie.value, { secure: true, sameSite: 'strict', expiry: $cookie.expiry });
+      } else {
+        cy.log('no auth token cookie found');
+      }
+    });
 
-  //   cy.reload();
+    cy.reload();
 
-  //   cy.wait('@authUserByCookiedToken').its('response.statusCode').should('eq', 400);
-  //   cy.wait('@refreshToken').its('response.statusCode').should('eq', 200);
-  //   cy.url().should('not.include', 'login');
-  // });
+    cy.wait('@authUserByCookiedToken').its('response.statusCode').should('eq', 400);
+    cy.wait('@refreshToken').its('response.statusCode').should('eq', 200);
+    cy.url().should('not.include', 'login');
+  });
 
-  // it('should redirect to the login page, since the token & refresh token both expired', () => {
-  //   cy.intercept('GET', '/api/auth/by-token**', (req) => {
-  //     delete req.headers['if-none-match'];
-  //   }).as('authUserByCookiedToken');
+  it('should redirect to the login page, since the token & refresh token both expired', () => {
+    cy.intercept('GET', '/api/auth/by-token**', (req) => {
+      delete req.headers['if-none-match'];
+    }).as('authUserByCookiedToken');
 
-  //   cy.intercept('GET', '/api/auth/refresh-token**', (req) => {
-  //     delete req.headers['if-none-match'];
-  //   }).as('refreshToken');
+    cy.intercept('GET', '/api/auth/refresh-token**', (req) => {
+      delete req.headers['if-none-match'];
+    }).as('refreshToken');
 
-  //   // manipulate cookies first to simulate an expired token
-  //   cy.getCookie(constants.AUTH_TOKEN).then(($cookie) => {
-  //     if ($cookie !== null) {
-  //       $cookie.value = 'expired_token_value_2';
-  //       cy.setCookie($cookie.name, $cookie.value, { secure: true, sameSite: 'strict', expiry: $cookie.expiry });
-  //     } else {
-  //       cy.log('no auth cookie found');
-  //     }
-  //   });
+    // manipulate cookies first to simulate an expired token
+    cy.getCookie(constants.AUTH_TOKEN).then(($cookie) => {
+      if ($cookie !== null) {
+        $cookie.value = 'expired_token_value_2';
+        cy.setCookie($cookie.name, $cookie.value, { secure: true, sameSite: 'strict', expiry: $cookie.expiry });
+      } else {
+        cy.log('no auth cookie found');
+      }
+    });
 
-  //   cy.getCookie(constants.AUTH_REFRESH_TOKEN).then(($cookie) => {
-  //     if ($cookie !== null) {
-  //       $cookie.value = 'expired_refresh_token_value';
-  //       cy.setCookie($cookie.name, $cookie.value, { secure: true, sameSite: 'strict', expiry: $cookie.expiry });
-  //     } else {
-  //       cy.log('no ref auth cookie found');
-  //     }
-  //   });
+    cy.getCookie(constants.AUTH_REFRESH_TOKEN).then(($cookie) => {
+      if ($cookie !== null) {
+        $cookie.value = 'expired_refresh_token_value';
+        cy.setCookie($cookie.name, $cookie.value, { secure: true, sameSite: 'strict', expiry: $cookie.expiry });
+      } else {
+        cy.log('no ref auth cookie found');
+      }
+    });
 
-  //   cy.reload();
-  //   cy.wait('@authUserByCookiedToken').its('response.statusCode').should('eq', 400);
-  //   cy.wait('@refreshToken').its('response.statusCode').should('eq', 400);
-  //   cy.url().should('include', 'login');
-  //   cy.getCookies().its('length').should('eq', 0);
-  // });
+    cy.reload();
+    cy.wait('@authUserByCookiedToken').its('response.statusCode').should('eq', 400);
+    cy.wait('@refreshToken').its('response.statusCode').should('eq', 400);
+    cy.url().should('include', 'login');
+    cy.getCookies().its('length').should('eq', 0);
+  });
 });
 
 export {};
