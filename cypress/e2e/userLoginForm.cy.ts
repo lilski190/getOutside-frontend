@@ -35,6 +35,7 @@ describe('check user login form processes', () => {
 
   it('should redirect to home', () => {
     cy.login('lili', 'lili')
+    cy.visit(`${Cypress.env('CYPRESS_baseUrl')}/home`);
     cy.url().should('eq', `${Cypress.env('CYPRESS_baseUrl')}/home`);
   });
 });

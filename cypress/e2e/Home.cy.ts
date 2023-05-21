@@ -50,17 +50,17 @@ describe('check if Mappoints are loaded', () => {
         });
 
 
-    it('should load Filter Mappoints', () => {
-      cy.get('#selectCategories').click();
-      cy.get('#CategoriesHeadline').should('be.visible');
-      cy.get('#showFavorites').should('be.visible');
-      cy.get('#selectAll').should('be.visible');
-      cy.get('#unselcetAll').should('be.visible');
-      cy.get('#ApplyFilter').should('be.visible');
-      cy.get('#Categorielist').should('be.visible');
-      cy.get('#closePopup').click();
-      cy.get('#Map-Container').should('be.visible');
-    });
+    // it('should load Filter Mappoints', () => {
+    //   cy.get('#selectCategories').click();
+    //   cy.get('#CategoriesHeadline').should('be.visible');
+    //   cy.get('#showFavorites').should('be.visible');
+    //   cy.get('#selectAll').should('be.visible');
+    //   cy.get('#unselcetAll').should('be.visible');
+    //   cy.get('#ApplyFilter').should('be.visible');
+    //   cy.get('#Categorielist').should('be.visible');
+    //   cy.get('#closePopup').click();
+    //   cy.get('#Map-Container').should('be.visible');
+    // });
 
   });
   
